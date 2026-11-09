@@ -1,0 +1,73 @@
+:root{
+  --bg:#eef1ee; --surface:#ffffff; --ink:#17251f; --muted:#5b6b63; --line:#d3dbd5;
+  --accent:#0f6b4f; --accent-ink:#ffffff;
+  --pending:#9a6a00; --pending-bg:#fbf0d2;
+  --approved:#1f4f9a; --approved-bg:#dde8fa;
+  --deployed:#0f6b4f; --deployed-bg:#d6f0e4;
+  --rolled:#a3321f; --rolled-bg:#f8dcd6;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1815; --surface:#17241f; --ink:#e4ede8; --muted:#97a89f; --line:#2b3b34;
+    --accent:#4fc79a; --accent-ink:#06231a;
+    --pending:#f0c05a; --pending-bg:#3a2e0f;
+    --approved:#8db4f5; --approved-bg:#16294a;
+    --deployed:#4fc79a; --deployed-bg:#0f3326;
+    --rolled:#f29a88; --rolled-bg:#43201a;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1815; --surface:#17241f; --ink:#e4ede8; --muted:#97a89f; --line:#2b3b34;
+  --accent:#4fc79a; --accent-ink:#06231a;
+  --pending:#f0c05a; --pending-bg:#3a2e0f;
+  --approved:#8db4f5; --approved-bg:#16294a;
+  --deployed:#4fc79a; --deployed-bg:#0f3326;
+  --rolled:#f29a88; --rolled-bg:#43201a;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 56px}
+h1{font:600 30px/1.15 "IBM Plex Serif",Georgia,serif;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 24px;max-width:60ch}
+.ledger{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--surface);border-radius:6px;margin-bottom:24px}
+.ledger div{padding:14px 18px;border-right:1px solid var(--line)}
+.ledger div:last-child{border-right:0}
+.ledger b{display:block;font:600 28px/1.1 "IBM Plex Serif",Georgia,serif;font-variant-numeric:tabular-nums}
+.ledger span{color:var(--muted);font-size:13px}
+form{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:10px;align-items:end;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:24px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+input,select,button{font:inherit;color:var(--ink)}
+input,select{padding:9px 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);width:100%}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.primary{background:var(--accent);color:var(--accent-ink);border:0;border-radius:4px;padding:10px 16px;font-weight:600;cursor:pointer}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;cursor:pointer;font-size:13px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.spacer{flex:1}
+.link{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:13px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-weight:500;color:var(--muted);font-size:13px}
+tr:last-child td{border-bottom:0}
+.ver{font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.s-pending{background:var(--pending-bg);color:var(--pending)}
+.s-approved{background:var(--approved-bg);color:var(--approved)}
+.s-deployed{background:var(--deployed-bg);color:var(--deployed)}
+.s-rolled{background:var(--rolled-bg);color:var(--rolled)}
+.act{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:4px 10px;cursor:pointer;font-size:13px;margin-right:6px}
+.act:hover{border-color:var(--accent)}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+@media (max-width:760px){
+  .ledger{grid-template-columns:repeat(2,1fr)}
+  .ledger div:nth-child(2){border-right:0}
+  .ledger div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  form{grid-template-columns:1fr 1fr}
+  form label:first-child,form .primary{grid-column:1/-1}
+}

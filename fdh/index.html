@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finance Deployment Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>Finance Deployment Hub</h1>
+  <p class="sub">Track every release of your finance systems from approval to production, and see what is waiting on a sign-off.</p>
+
+  <section class="ledger" aria-label="Summary" id="stats"></section>
+
+  <form id="add" autocomplete="off">
+    <label>Service
+      <input id="svc" required placeholder="e.g. General Ledger API">
+    </label>
+    <label>Version
+      <input id="ver" required placeholder="2.4.1">
+    </label>
+    <label>Environment
+      <select id="env"><option>Dev</option><option>Staging</option><option selected>Production</option></select>
+    </label>
+    <label>Owner
+      <input id="own" required placeholder="Name">
+    </label>
+    <button class="primary" type="submit">Add deployment</button>
+  </form>
+
+  <div class="bar" id="filters" role="group" aria-label="Filter by environment"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Service</th><th>Version</th><th>Environment</th><th>Owner</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No deployments here yet. Add one above to get started.</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
